@@ -10,7 +10,7 @@ function Fetch({ url }) {
         axios.get(url).then(result => {
             result.data.results.forEach(element =>
                 {
-                    element.income ="$10000"
+                    element.amount ={"income" : "$10000"};
                 });
             setData(result.data.results);
             localStorage.setItem("locStr", JSON.stringify(result.data.results));
