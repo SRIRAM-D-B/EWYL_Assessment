@@ -1,15 +1,26 @@
-import { useEffect } from "react";
+import { useEffect,useState } from "react";
 import axios from "axios";
 
 function Fetch({ url }) {
+
+    const [data, setData] = useState(JSON.parse(localStorage.getItem("locStr") || "[]"));
+
     useEffect(() => {
         axios.get(url).then(result => {
-            console.log(result.data.results);
+            setData(result.data.results);
+            localStorage.setItem("locStr", JSON.stringify(result.data.results));
         })
     }, []);
-
-    console.log(url);
-    return <div>Fetch</div>;
+    return (
+    <div>
+        {
+            (data.length > 0) && <span>There is data</span>
+        }
+        {
+            (data.length === 0) && <span>No Data</span>
+        }
+    </div>
+    );
 }
 
 export default Fetch;
