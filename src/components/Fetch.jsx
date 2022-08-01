@@ -19,7 +19,17 @@ function Fetch({ url }) {
     return (
     <div >
         {
-            (data.length > 0) && <span>There is data</span>
+            (data.length > 0) && data.map((details, index) => (
+                <div  key={index}>
+                    <img src={details.picture.large}  /><br />
+                    <div >
+                        <span>{details.name.title}{" "}{details.name.first}{" "}{details.name.last}</span>
+                        <span>{details.email}</span>
+                        <span>{details.location.country}</span>
+                        <span>{details.income}</span>
+                    </div>
+                </div>
+            ))
         }
         {
             (data.length === 0) && <span>No Data</span>
