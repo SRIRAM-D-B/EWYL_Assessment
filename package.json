@@ -1,5 +1,5 @@
 {
-  "name": "assessment_practice",
+  "name": "ewyl_assessment",
   "version": "1.0.0",
   "description": "practice for aug 1 assessment",
   "main": "index.js",
@@ -13,6 +13,7 @@
   "author": "sriram",
   "license": "ISC",
   "dependencies": {
+    "axios": "^0.27.2",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-router-dom": "^6.3.0",
