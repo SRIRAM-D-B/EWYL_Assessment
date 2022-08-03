@@ -1,6 +1,7 @@
 import { useEffect,useState } from "react";
 import axios from "axios";
 import 'bootstrap/dist/css/bootstrap.min.css'
+import './style.css'
 
 function Fetch({ url }) {
 
@@ -25,15 +26,16 @@ function Fetch({ url }) {
             console.log(filteredData);
         };
     return (
-    <div className="d-flex flex-column gap-5">
         <div>
-            <input type="text"  onChange={e => setName(e.target.value)} placeholder="User-Name"/>
-            <button onClick={()=>searchCharacterbyname()}>submit</button>
+        <div className="search p-5 gap-3">
+            <input type="text" className="border-radius input"  onChange={e => setName(e.target.value)} placeholder="          User-Name"/>
+            <button className="btn" onClick={()=>searchCharacterbyname()}>submit</button>
         </div>
+        <div className="card-container justify-content-around d-flex flex-wrap ">
         {
             (data.length > 0) && data.map((details, index) => (
-                <div className="d-flex gap-3 flex-row" key={index}>
-                    <img src={details.picture.large} className="p-2" /><br />
+                <div className="d-flex gap-3 card  " key={index}>
+                    <img src={details.picture.large} className="m-2 border rounded-circle" />
                     <div className="d-flex flex-column p-5" >
                         <span>{details.name.title}{" "}{details.name.first}{" "}{details.name.last}</span>
                         <span>{details.email}</span>
@@ -46,6 +48,7 @@ function Fetch({ url }) {
         {
             (data.length === 0) && <span>No Data</span>
         }
+    </div>
     </div>
     );
 }
